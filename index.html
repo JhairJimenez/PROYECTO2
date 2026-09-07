@@ -2089,6 +2089,38 @@
       transform: translateY(-1px);
     }
 
+    .letter-bgm-chip {
+      background: rgba(255, 71, 102, 0.08);
+      border: 1px solid rgba(255, 140, 165, 0.35);
+      border-radius: 999px;
+      padding: 5px 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #b02a48;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+
+    .letter-bgm-chip:hover {
+      background: rgba(255, 71, 102, 0.16);
+      border-color: rgba(255, 71, 102, 0.5);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(255, 71, 102, 0.12);
+    }
+
+    .letter-bgm-chip.is-paused {
+      opacity: 0.6;
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.12);
+      color: #88787e;
+    }
+
     .letter-close-btn {
       width: 28px;
       height: 28px;
@@ -3459,6 +3491,7 @@
               <button class="letter-flip-back-btn" id="letterFlipBackBtn" title="Volver a la foto">
                 <span></span> Ver foto ↺
               </button>
+              <button class="letter-bgm-chip" id="letterBgmChip" title="AMTRAK" type="button">AMTRAK</button>
               <button class="letter-close-btn" id="letterCloseBtnBack" title="Cerrar carta">✕</button>
             </div>
 
@@ -3490,7 +3523,8 @@
                   darme una oportunidad, y que por algo el destino nos cruzó.</p>
 
                 <p>Al <span class="txt-emphasis" data-time="18.2">acercarme</span> poco a poco, después de cada partida
-                  de UNO, me enamoré aún más: esa rivalidad, a la vez odio por porque siempre me ganabas, jaja. Luego me decidí a
+                  de UNO, me enamoré aún más: esa rivalidad, a la vez odio por porque siempre me ganabas, jaja. Luego me
+                  decidí a
                   invitarte a tener salidas. Y me atreví a <span class="txt-emphasis" data-time="19.1">decirte</span> si
                   querías ir por una hamburguesa gigante, que te sorprendió. Recuerdo <span class="txt-emphasis"
                     data-time="19.8">que</span> después de esa noche me quedé con algunas dudas, y al día siguiente te
@@ -3499,9 +3533,9 @@
                 <p><span class="txt-emphasis" data-time="20.3">Cuando te besé</span>, fue algo inesperado para ti y lo
                   sé, te hice sentir presionada, pero yo estaba sintiendo mucho en ese momento; y cuando lo hice,
                   <span class="txt-emphasis" data-time="24.7">sentí que toqué el cielo, y no me equivoqué, porque</span>
-                  aunque todo fue muy rápido y tomaste esa decisión de ser amigos, yo <span
-                    class="txt-emphasis" data-time="30.5">no</span> quería, pero acepté tu decisión; pero luego <span
-                    class="txt-emphasis" data-time="33.8">lo haría de nuevo</span>, y te volví a invitar a jugar
+                  aunque todo fue muy rápido y tomaste esa decisión de ser amigos, yo <span class="txt-emphasis"
+                    data-time="30.5">no</span> quería, pero acepté tu decisión; pero luego <span class="txt-emphasis"
+                    data-time="33.8">lo haría de nuevo</span>, y te volví a invitar a jugar
                   otra partida de UNO, con la excusa que jugaríamos con nuestro grupo, cuando tuvieron que
                   irse,
                   volví a decidirme <span class="txt-emphasis" data-time="36.5">de nuevo</span> a volver a invitarte a
@@ -3516,9 +3550,9 @@
                   <span class="txt-emphasis" data-time="66.5">sentí ese</span> sentimiento, <span class="txt-emphasis"
                     data-time="68.0">no sé qué del que tanto hablé</span> tantas veces; intenté explicar, aunque ni yo
                   sabía cómo hacerlo. Y sinceramente, <span class="txt-emphasis" data-time="71.2">no pensé que fuera a
-                    suceder</span> otra vez, pero terminó pasando y <span class="txt-emphasis"
-                    data-time="73.7">todo terminó en un beso</span>. Y sí, tengo que admitirlo, <span
-                    class="txt-emphasis" data-time="76.0">besarte fue un placer</span>.
+                    suceder</span> otra vez, pero terminó pasando y <span class="txt-emphasis" data-time="73.7">todo
+                    terminó en un beso</span>. Y sí, tengo que admitirlo, <span class="txt-emphasis"
+                    data-time="76.0">besarte fue un placer</span>.
                 </p>
 
                 <p>Después de eso entendí que <span class="txt-emphasis" data-time="79.6">solo quería conocerte</span>,
@@ -3561,7 +3595,8 @@
 
                 <p>A veces, incluso quería pedirte <span class="txt-emphasis" data-time="156.5">un ratito más</span>,
                   aunque fuera solamente para seguir hablando contigo, caminar un poco más o simplemente quedarme a tu
-                  lado sin hacer nada. En esos momentos, lo único que quería era que <span class="txt-emphasis" data-time="158.9">no te vayas</span>, que
+                  lado sin hacer nada. En esos momentos, lo único que quería era que <span class="txt-emphasis"
+                    data-time="158.9">no te vayas</span>, que
                   cuando sentía que te alejabas un poquito, parecía que <span class="txt-emphasis" data-time="160.0">se
                     apaga mi ilusión</span>.</p>
 
@@ -3593,6 +3628,7 @@
               </div>
 
               <audio id="letterSecretAudio" src="tebese.mp3" preload="auto"></audio>
+              <audio id="letterBgAudio" src="Amtrak.mp3" preload="auto" loop></audio>
             </div>
 
             <!-- BARRA REPRODUCTORA ACOPLADA AL PIE DE LA CARTA (NUNCA TAPA EL TEXTO) -->
@@ -4925,6 +4961,133 @@
     }
 
     // ============================================================
+    // MÚSICA AMBIENTAL DE FONDO PARA LA CARTA (Amtrak.mp3 - 30% VOL)
+    // ============================================================
+    const letterBgAudio = document.getElementById('letterBgAudio');
+    const letterBgmChip = document.getElementById('letterBgmChip');
+    let bgAudioFadeInterval = null;
+    const TARGET_BGM_VOL = 0.30; // 30% de volumen pedido por el usuario
+
+    function playLetterBgAudio(fadeIn = true) {
+      if (!letterBgAudio) return;
+
+      // Si la música secreta está reproduciéndose (tebese.mp3), no interrumpirla con Amtrak
+      if (letterSecretAudio && !letterSecretAudio.paused) return;
+
+      // Si la música general de la web (mai.mp3) está sonando, pausarla suavemente para evitar ruidos dobles
+      if (typeof audio !== 'undefined' && audio && !audio.paused) {
+        audio.pause();
+        if (typeof playIcon !== 'undefined' && playIcon && typeof ICON_PLAY !== 'undefined') {
+          playIcon.innerHTML = ICON_PLAY;
+        }
+        if (typeof player !== 'undefined' && player) {
+          player.classList.remove('playing');
+        }
+      }
+
+      if (bgAudioFadeInterval) {
+        clearInterval(bgAudioFadeInterval);
+        bgAudioFadeInterval = null;
+      }
+
+      if (fadeIn && letterBgAudio.paused) {
+        letterBgAudio.volume = 0.03;
+        const playPromise = letterBgAudio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            let cur = letterBgAudio.volume;
+            bgAudioFadeInterval = setInterval(() => {
+              cur = Math.min(TARGET_BGM_VOL, cur + 0.03);
+              if (letterBgAudio) letterBgAudio.volume = cur;
+              if (cur >= TARGET_BGM_VOL) {
+                clearInterval(bgAudioFadeInterval);
+                bgAudioFadeInterval = null;
+              }
+            }, 60);
+          }).catch(err => {
+            console.warn("Reproducción de Amtrak.mp3 en espera de interacción:", err);
+          });
+        }
+      } else {
+        letterBgAudio.volume = TARGET_BGM_VOL;
+        letterBgAudio.play().catch(e => console.warn(e));
+      }
+
+      if (letterBgmChip) {
+        letterBgmChip.classList.remove('is-paused');
+        letterBgmChip.title = "AMTRAK";
+      }
+    }
+
+    function pauseLetterBgAudio(fadeOut = true) {
+      if (!letterBgAudio || letterBgAudio.paused) return;
+      if (bgAudioFadeInterval) {
+        clearInterval(bgAudioFadeInterval);
+        bgAudioFadeInterval = null;
+      }
+
+      if (fadeOut) {
+        let cur = letterBgAudio.volume;
+        bgAudioFadeInterval = setInterval(() => {
+          cur = Math.max(0, cur - 0.05);
+          if (letterBgAudio) letterBgAudio.volume = cur;
+          if (cur <= 0) {
+            clearInterval(bgAudioFadeInterval);
+            bgAudioFadeInterval = null;
+            if (letterBgAudio) letterBgAudio.pause();
+          }
+        }, 40);
+      } else {
+        letterBgAudio.pause();
+      }
+
+      if (letterBgmChip) {
+        letterBgmChip.classList.add('is-paused');
+        letterBgmChip.title = "AMTRAK";
+      }
+    }
+
+    function stopLetterBgAudio() {
+      if (!letterBgAudio) return;
+      if (bgAudioFadeInterval) {
+        clearInterval(bgAudioFadeInterval);
+        bgAudioFadeInterval = null;
+      }
+      letterBgAudio.pause();
+      letterBgAudio.currentTime = 0;
+      letterBgAudio.volume = TARGET_BGM_VOL;
+      if (letterBgmChip) {
+        letterBgmChip.classList.add('is-paused');
+      }
+    }
+
+    function toggleLetterBgAudio() {
+      if (!letterBgAudio) return;
+      if (letterBgAudio.paused) {
+        playLetterBgAudio(false);
+      } else {
+        pauseLetterBgAudio(false);
+      }
+    }
+
+    if (letterBgmChip) {
+      letterBgmChip.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleLetterBgAudio();
+      });
+    }
+
+    if (letterBgAudio) {
+      letterBgAudio.volume = TARGET_BGM_VOL;
+      letterBgAudio.addEventListener('play', () => {
+        if (letterBgmChip) letterBgmChip.classList.remove('is-paused');
+      });
+      letterBgAudio.addEventListener('pause', () => {
+        if (letterBgmChip) letterBgmChip.classList.add('is-paused');
+      });
+    }
+
+    // ============================================================
     // CANCIÓN OCULTA SINCRONIZADA Y REVELACIÓN PROGRESIVA CON AUDIO
     // ============================================================
     const letterSecretAudio = document.getElementById('letterSecretAudio');
@@ -4987,6 +5150,9 @@
       isStoryVideoTriggered = false;
       hideStoryVideo();
 
+      // Detener música de fondo de la carta (Amtrak.mp3) para que suene la canción secreta
+      stopLetterBgAudio();
+
       // Pausar música general de la web (mai.mp3) si está activa
       if (typeof audio !== 'undefined' && audio && !audio.paused) {
         audio.pause();
@@ -5046,6 +5212,11 @@
       if (letterSecretTriggerWrap) letterSecretTriggerWrap.style.display = 'block';
       if (lrpPlayBtn) lrpPlayBtn.innerHTML = '⏸';
       if (lrpWaves) lrpWaves.classList.remove('is-paused');
+
+      // Si la carta sigue abierta y volteada, reanudar música ambiente Amtrak (30% vol)
+      if (letterFlipper && letterFlipper.classList.contains('is-flipped') && letterOverlay && letterOverlay.classList.contains('is-open')) {
+        playLetterBgAudio(true);
+      }
     }
 
     function toggleSecretAudio() {
@@ -5273,6 +5444,7 @@
         if (letterContainer) letterContainer.classList.add('is-letter-view');
         if (letterFlipper) letterFlipper.classList.add('is-flipped');
         if (letterScrollArea) letterScrollArea.scrollTop = 0;
+        playLetterBgAudio(true);
       } else {
         if (letterContainer) letterContainer.classList.remove('is-letter-view');
         if (letterFlipper) letterFlipper.classList.remove('is-flipped');
@@ -5286,6 +5458,7 @@
       hideLetterSecret();
       hideStoryVideo();
       isStoryVideoTriggered = false;
+      stopLetterBgAudio();
 
       // Resetear al cerrar para que al volver a abrir siempre inicie primero en la foto
       setTimeout(() => {
@@ -5308,6 +5481,7 @@
         if (letterSecretAudio) letterSecretAudio.pause();
         hideStoryVideo();
         isStoryVideoTriggered = false;
+        pauseLetterBgAudio(true);
       });
     }
 
@@ -5316,6 +5490,7 @@
       letterFlipper.classList.add('is-flipped');
       if (letterContainer) letterContainer.classList.add('is-letter-view');
       if (letterScrollArea) letterScrollArea.scrollTop = 0;
+      playLetterBgAudio(true);
     }
 
     if (centerFlipBtn) {
